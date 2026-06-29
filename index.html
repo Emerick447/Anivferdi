@@ -10,4 +10,7 @@ let i=setInterval(()=>{p++;f.style.width=p+'%';t.textContent=msgs[Math.min(4,Mat
 const cv=document.getElementById('c'),x=cv.getContext('2d');function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();onresize=rs;
 let pts=[...Array(100)].map(()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5),vy:(Math.random()-.5)}));
 (function a(){x.fillStyle='#0b2a12';x.fillRect(0,0,cv.width,cv.height);x.fillStyle='#3f6';pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cv.width)p.vx*=-1;if(p.y<0||p.y>cv.height)p.vy*=-1;x.fillRect(p.x,p.y,3,3)});requestAnimationFrame(a)})();
-</script></body></html>
+</script>
+<br>
+<buton onclick='window.location("https://github.com/Emerick447/tim-eme/tree/91868f421e0940b030203901c9f75dac85486f4d/APPS/EXE")'>Télécharger mincrat presque jouable</buton>
+</body></html>
