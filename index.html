@@ -1,16 +1,144 @@
-<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><title>Ferdinand 13</title>
-<style>body{margin:0;background:#111;color:#fff;font-family:Arial;overflow:hidden}#loading{position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#111}#bar{width:60%;height:28px;border:3px solid #888}#fill{height:100%;width:0;background:#39d353}#menu{display:none;text-align:center;padding-top:10vh}button{padding:12px 20px;font-size:18px}canvas{position:fixed;inset:0;z-index:-1}</style></head><body>
-<canvas id='c'></canvas>
-<div id='loading'><h1>Chargement du monde…</h1><div id='bar'><div id='fill'></div></div><p id='txt'>0%</p></div>
-<div id='menu'><h1>🎉 Joyeux anniversaire Ferdinand !</h1><h2>Niveau 13 débloqué</h2><button onclick="location.href='game.html'">🌐 Rejoindre le serveur</button></div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Ferdinand 13</title>
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    color:#fff;
+    font-family:Arial;
+    overflow:hidden;
+}
+#loading{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+}
+#bar{
+    width:60%;
+    height:28px;
+    border:3px solid #888;
+}
+#fill{
+    height:100%;
+    width:0;
+    background:#39d353;
+}
+#menu{
+    display:none;
+    text-align:center;
+    padding-top:10vh;
+}
+button{
+    padding:12px 20px;
+    font-size:18px;
+    cursor:pointer;
+}
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+</style>
+
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div id="loading">
+    <h1>Chargement du monde…</h1>
+    <div id="bar">
+        <div id="fill"></div>
+    </div>
+    <p id="txt">0%</p>
+</div>
+
+<div id="menu">
+    <h1>🎉 Joyeux anniversaire Ferdinand !</h1>
+    <h2>Niveau 13 débloqué</h2>
+
+    <button onclick="location.href='game.html'">
+        🌐 Rejoindre le serveur
+    </button>
+
+    <br><br>
+
+    <button onclick="window.open('https://github.com/Emerick447/tim-eme/tree/91868f421e0940b030203901c9f75dac85486f4d/APPS/EXE','_blank')">
+        📥 Télécharger Minecraft presque jouable
+    </button>
+</div>
+
 <script>
-const msgs=['Initialisation...','Génération du monde...','Chargement des chunks...','Préparation du cadeau...','Connexion...'];
-let p=0;const f=fill,t=txt;
-let i=setInterval(()=>{p++;f.style.width=p+'%';t.textContent=msgs[Math.min(4,Math.floor(p/20))]+' '+p+'%';if(p>=100){clearInterval(i);loading.style.display='none';menu.style.display='block';}},40);
-const cv=document.getElementById('c'),x=cv.getContext('2d');function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();onresize=rs;
-let pts=[...Array(100)].map(()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5),vy:(Math.random()-.5)}));
-(function a(){x.fillStyle='#0b2a12';x.fillRect(0,0,cv.width,cv.height);x.fillStyle='#3f6';pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cv.width)p.vx*=-1;if(p.y<0||p.y>cv.height)p.vy*=-1;x.fillRect(p.x,p.y,3,3)});requestAnimationFrame(a)})();
+const msgs=[
+    'Initialisation...',
+    'Génération du monde...',
+    'Chargement des chunks...',
+    'Préparation du cadeau...',
+    'Connexion...'
+];
+
+let p=0;
+const f=document.getElementById("fill");
+const t=document.getElementById("txt");
+const loading=document.getElementById("loading");
+const menu=document.getElementById("menu");
+
+let i=setInterval(()=>{
+    p++;
+    f.style.width=p+'%';
+    t.textContent=msgs[Math.min(4,Math.floor(p/20))]+' '+p+'%';
+
+    if(p>=100){
+        clearInterval(i);
+        loading.style.display='none';
+        menu.style.display='block';
+    }
+},40);
+
+const cv=document.getElementById('c');
+const x=cv.getContext('2d');
+
+function rs(){
+    cv.width=innerWidth;
+    cv.height=innerHeight;
+}
+rs();
+onresize=rs;
+
+let pts=[...Array(100)].map(()=>({
+    x:Math.random()*cv.width,
+    y:Math.random()*cv.height,
+    vx:(Math.random()-.5),
+    vy:(Math.random()-.5)
+}));
+
+(function a(){
+    x.fillStyle='#0b2a12';
+    x.fillRect(0,0,cv.width,cv.height);
+
+    x.fillStyle='#3f6';
+
+    pts.forEach(p=>{
+        p.x+=p.vx;
+        p.y+=p.vy;
+
+        if(p.x<0||p.x>cv.width) p.vx*=-1;
+        if(p.y<0||p.y>cv.height) p.vy*=-1;
+
+        x.fillRect(p.x,p.y,3,3);
+    });
+
+    requestAnimationFrame(a);
+})();
 </script>
-<br>
-<buton onclick='window.location("https://github.com/Emerick447/tim-eme/tree/91868f421e0940b030203901c9f75dac85486f4d/APPS/EXE")'>Télécharger mincrat presque jouable</buton>
-</body></html>
+
+</body>
+</html>
